@@ -1,7 +1,7 @@
 # Reference: https://build-cpp.github.io/cmkr/cmake-toml
 [project]
-name = "cmkr_for_beginners"
-description = "A minimal cmkr project."
+name = "cmkr-testing"
+description = "cmkr-testing"
 
 [target.hello_world]
 type = "executable"
@@ -10,3 +10,11 @@ sources = ["src/**.cpp", "src/**.h"]
 [target.hello_world_static_lib]
 type = "static"
 sources = ["lib/hello_world_static_lib/**.cpp", "lib/hello_world_static_lib/**.h"]
+
+[target.hello_world_static_library]
+type = "library"
+sources = ["lib/hello_world_static_library/**.cpp", "lib/hello_world_static_library/**.h"]
+
+[target.hello_world_static_shared]
+type = "shared"
+sources = ["lib/hello_world_static_shared/**.cpp", "lib/hello_world_static_shared/**.h"]

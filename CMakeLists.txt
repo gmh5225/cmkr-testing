@@ -27,9 +27,9 @@ if(CMKR_ROOT_PROJECT)
 	configure_file(cmake.toml cmake.toml COPYONLY)
 endif()
 
-project(cmkr_for_beginners
+project(cmkr-testing
 	DESCRIPTION
-		"A minimal cmkr project."
+		cmkr-testing
 )
 
 # Target hello_world
@@ -82,6 +82,54 @@ if(hello_world_static_lib_SOURCES)
 endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_lib_SOURCES})
+
+unset(CMKR_TARGET)
+unset(CMKR_SOURCES)
+
+# Target hello_world_static_library
+set(CMKR_TARGET hello_world_static_library)
+set(hello_world_static_library_SOURCES "")
+
+list(APPEND hello_world_static_library_SOURCES
+	"lib/hello_world_static_library/hello_world_static_library.cpp"
+)
+
+list(APPEND hello_world_static_library_SOURCES
+	cmake.toml
+)
+
+set(CMKR_SOURCES ${hello_world_static_library_SOURCES})
+add_library(hello_world_static_library)
+
+if(hello_world_static_library_SOURCES)
+	target_sources(hello_world_static_library PRIVATE ${hello_world_static_library_SOURCES})
+endif()
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_library_SOURCES})
+
+unset(CMKR_TARGET)
+unset(CMKR_SOURCES)
+
+# Target hello_world_static_shared
+set(CMKR_TARGET hello_world_static_shared)
+set(hello_world_static_shared_SOURCES "")
+
+list(APPEND hello_world_static_shared_SOURCES
+	"lib/hello_world_static_shared/hello_world_static_shared.cpp"
+)
+
+list(APPEND hello_world_static_shared_SOURCES
+	cmake.toml
+)
+
+set(CMKR_SOURCES ${hello_world_static_shared_SOURCES})
+add_library(hello_world_static_shared SHARED)
+
+if(hello_world_static_shared_SOURCES)
+	target_sources(hello_world_static_shared PRIVATE ${hello_world_static_shared_SOURCES})
+endif()
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_shared_SOURCES})
 
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)
