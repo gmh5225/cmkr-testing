@@ -59,6 +59,15 @@ endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_SOURCES})
 
+target_compile_features(hello_world PRIVATE
+	cxx_std_20
+)
+
+target_link_libraries(hello_world PRIVATE
+	hello_world_static_lib
+	hello_world_static_library
+)
+
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)
 
@@ -82,6 +91,10 @@ if(hello_world_static_lib_SOURCES)
 endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_lib_SOURCES})
+
+target_compile_features(hello_world_static_lib PUBLIC
+	cxx_std_20
+)
 
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)
@@ -107,6 +120,10 @@ endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_library_SOURCES})
 
+target_compile_features(hello_world_static_library PUBLIC
+	cxx_std_20
+)
+
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)
 
@@ -130,6 +147,10 @@ if(hello_world_static_shared_SOURCES)
 endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_shared_SOURCES})
+
+target_compile_features(hello_world_static_shared PUBLIC
+	cxx_std_20
+)
 
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)

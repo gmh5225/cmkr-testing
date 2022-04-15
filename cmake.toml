@@ -6,15 +6,21 @@ description = "cmkr-testing"
 [target.hello_world]
 type = "executable"
 sources = ["src/**.cpp", "src/**.h"]
+compile-features = ["cxx_std_20"]
+link-libraries = ["hello_world_static_lib", "hello_world_static_library"]
 
 [target.hello_world_static_lib]
 type = "static"
 sources = ["lib/hello_world_static_lib/**.cpp", "lib/hello_world_static_lib/**.h"]
+compile-features = ["cxx_std_20"]
 
 [target.hello_world_static_library]
 type = "library"
 sources = ["lib/hello_world_static_library/**.cpp", "lib/hello_world_static_library/**.h"]
+compile-features = ["cxx_std_20"]
 
 [target.hello_world_static_shared]
 type = "shared"
 sources = ["lib/hello_world_static_shared/**.cpp", "lib/hello_world_static_shared/**.h"]
+compile-features = ["cxx_std_20"]
+
