@@ -5,4 +5,8 @@ description = "A minimal cmkr project."
 
 [target.hello_world]
 type = "executable"
-sources = ["src/main.cpp"]
+sources = ["src/**.cpp", "src/**.h"]
+
+[target.hello_world_static_lib]
+type = "static"
+sources = ["lib/hello_world_static_lib/**.cpp", "lib/hello_world_static_lib/**.h"]

@@ -38,6 +38,7 @@ set(hello_world_SOURCES "")
 
 list(APPEND hello_world_SOURCES
 	"src/main.cpp"
+	"src/main.h"
 )
 
 list(APPEND hello_world_SOURCES
@@ -57,6 +58,30 @@ if(NOT CMKR_VS_STARTUP_PROJECT)
 endif()
 
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_SOURCES})
+
+unset(CMKR_TARGET)
+unset(CMKR_SOURCES)
+
+# Target hello_world_static_lib
+set(CMKR_TARGET hello_world_static_lib)
+set(hello_world_static_lib_SOURCES "")
+
+list(APPEND hello_world_static_lib_SOURCES
+	"lib/hello_world_static_lib/hello_world_static_lib.cpp"
+)
+
+list(APPEND hello_world_static_lib_SOURCES
+	cmake.toml
+)
+
+set(CMKR_SOURCES ${hello_world_static_lib_SOURCES})
+add_library(hello_world_static_lib STATIC)
+
+if(hello_world_static_lib_SOURCES)
+	target_sources(hello_world_static_lib PRIVATE ${hello_world_static_lib_SOURCES})
+endif()
+
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${hello_world_static_lib_SOURCES})
 
 unset(CMKR_TARGET)
 unset(CMKR_SOURCES)
