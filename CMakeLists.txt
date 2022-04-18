@@ -32,6 +32,16 @@ project(cmkr-testing
 		cmkr-testing
 )
 
+# EasyPatternScanner
+set(CMKR_CMAKE_FOLDER ${CMAKE_FOLDER})
+if(CMAKE_FOLDER)
+	set(CMAKE_FOLDER "${CMAKE_FOLDER}/EasyPatternScanner")
+else()
+	set(CMAKE_FOLDER EasyPatternScanner)
+endif()
+add_subdirectory(EasyPatternScanner)
+set(CMAKE_FOLDER ${CMKR_CMAKE_FOLDER})
+
 # Target hello_world
 set(CMKR_TARGET hello_world)
 set(hello_world_SOURCES "")
@@ -63,9 +73,14 @@ target_compile_features(hello_world PRIVATE
 	cxx_std_20
 )
 
+target_include_directories(hello_world PRIVATE
+	"EasyPatternScanner/src"
+)
+
 target_link_libraries(hello_world PRIVATE
 	hello_world_static_lib
 	hello_world_static_library
+	EasyPatternScannerLib
 )
 
 unset(CMKR_TARGET)

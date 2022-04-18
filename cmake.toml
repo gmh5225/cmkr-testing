@@ -3,11 +3,16 @@
 name = "cmkr-testing"
 description = "cmkr-testing"
 
+
+[subdir.EasyPatternScanner]
+
+
 [target.hello_world]
 type = "executable"
 sources = ["src/**.cpp", "src/**.h"]
 compile-features = ["cxx_std_20"]
-link-libraries = ["hello_world_static_lib", "hello_world_static_library"]
+link-libraries = ["hello_world_static_lib", "hello_world_static_library", "EasyPatternScannerLib"]
+include-directories = ["EasyPatternScanner/src"]
 
 [target.hello_world_static_lib]
 type = "static"
